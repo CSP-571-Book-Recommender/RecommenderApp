@@ -7,8 +7,11 @@
 #    http://shiny.rstudio.com/
 #
 #install.packages("shinydashboard")
+#install.packages("devtools")
+devtools::install_github("stefanwilhelm/ShinyRatingInput")
 library(shiny)
 library(shinydashboard)
+library(ShinyRatingInput)
 
 # Define UI for application that draws a histogram
 shinyUI(
@@ -39,9 +42,8 @@ shinyUI(
     
     fluidRow(
       box(width = 12, title = "Books You May Like", background = "purple", solidHeader = TRUE, collapsible = TRUE,
-          #actionButton("myButton", "Get Recommendations", style='padding:4px'),
-          div(style="display:inline-block;width:100%;text-align: center;",actionButton("myButton", "Get Recommendations", icon = icon("book")))
-          
+          div(style="display:inline-block;width:100%;text-align: center;",actionButton("myButton", "Get Recommendations", icon = icon("book"))),
+          tableOutput("results")
       )
       
     )
