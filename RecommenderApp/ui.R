@@ -9,10 +9,12 @@
 #install.packages("shinydashboard")
 #install.packages("devtools")
 devtools::install_github("stefanwilhelm/ShinyRatingInput")
+devtools::install_github('andrewsali/shinycssloaders')
 library(shiny)
 library(shinydashboard)
 library(ShinyRatingInput)
-
+library(shinycssloaders)
+library(dplyr)
 # Define UI for application that draws a histogram
 shinyUI(
   
@@ -43,7 +45,7 @@ shinyUI(
     fluidRow(
       box(width = 12, title = "Books You May Like", background = "purple", solidHeader = TRUE, collapsible = TRUE,
           div(style="display:inline-block;width:100%;text-align: center;",actionButton("myButton", "Get Recommendations", icon = icon("book"))),
-          tableOutput("results")
+          withSpinner(tableOutput("results"))
       )
       
     )
