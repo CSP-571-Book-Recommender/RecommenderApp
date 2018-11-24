@@ -20,7 +20,7 @@ shinyUI(
   
   dashboardPage(
     skin = "purple",
-  dashboardHeader(title = "Let's get some book recommendations!",
+  dashboardHeader(title = "Good Books",
                   titleWidth = 500),
   dashboardSidebar(disable = TRUE),
   dashboardBody(
@@ -33,19 +33,18 @@ shinyUI(
                                       text-align: center;
                                       }
                                       "))),
-      box(width = 12, title = "Rate Some Books", background = "purple", solidHeader = TRUE, collapsible = TRUE,
+      box(width = 12,  title = "Rate Some Books", background = "black", solidHeader = TRUE, collapsible = TRUE,
           div(class = "padding-left: 5px; 
-              height: 450px; 
-              overflow-y: scroll;",
-              uiOutput('ratings')
-          )
+              height: 250px; 
+              overflow-y: scroll;",uiOutput('ratings'))
       )
     ),
     
     fluidRow(
-      box(width = 12, title = "Books You May Like", background = "purple", solidHeader = TRUE, collapsible = TRUE,
-          div(style="display:inline-block;width:100%;text-align: center;",actionButton("myButton", "Get Recommendations", icon = icon("book"))),
-          withSpinner(tableOutput("results"))
+      box(width = 12, title = "Books You May Like", background = "black", solidHeader = TRUE, collapsible = TRUE,
+          div(style="display:inline-block;width:100%;text-align: center; padding-bottom: 30px",actionButton("myButton", "Get Recommendations", icon = icon("book"))),
+          div(style = "padding-left: 120px", withSpinner(tableOutput("results")))
+          
       )
       
     )
